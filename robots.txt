@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Разрешаем индексацию всех страниц
+Allow: /index.html
+Allow: /styles.css
+Allow: /script.js
+
+# Запрещаем индексацию служебных файлов
+Disallow: /README.md
+Disallow: /DEPLOYMENT.md
+Disallow: /TESTING.md
+Disallow: /PROJECT_SUMMARY.md
+Disallow: /meta-tags.html
+Disallow: /enhanced-styles.css
+
+# Указываем расположение sitemap
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# Время задержки между запросами (в секундах)
+Crawl-delay: 1
