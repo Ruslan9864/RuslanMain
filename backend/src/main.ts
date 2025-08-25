@@ -33,8 +33,13 @@ async function bootstrap() {
     crossOriginEmbedderPolicy: false,
   }));
 
-  // CORS configuration
-  const allowedOrigins = configService.get<string>('ALLOWED_ORIGINS', 'http://localhost:3000').split(',');
+  // CORS configuration - разрешаем только GitHub Pages
+  const allowedOrigins = [
+    'https://ruslan9864.github.io',
+    'http://localhost:3000',
+    'http://localhost:3001',
+  ];
+  
   app.enableCors({
     origin: allowedOrigins,
     credentials: true,
@@ -95,13 +100,14 @@ async function bootstrap() {
       'JWT-auth',
     )
     .addTag('auth', 'Authentication endpoints')
+    .addTag('users', 'User management')
     .addTag('posts', 'Post management')
     .addTag('media', 'Media management')
     .addTag('categories', 'Category management')
     .addTag('tags', 'Tag management')
-    .addTag('authors', 'Author management')
     .addTag('seo', 'SEO and feeds')
     .addTag('webhooks', 'Webhook management')
+    .addTag('health', 'Health checks')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
@@ -127,6 +133,7 @@ async function bootstrap() {
   logger.log(`🚀 Application is running on: http://localhost:${port}`);
   logger.log(`📚 API Documentation: http://localhost:${port}/api/docs`);
   logger.log(`🏥 Health Check: http://localhost:${port}/health`);
+  logger.log(`🌐 CORS enabled for: ${allowedOrigins.join(', ')}`);
 }
 
 bootstrap().catch((error) => {
