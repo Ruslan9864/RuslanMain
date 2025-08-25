@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - RHYTHM Blog</title>
+    <meta name="description" content="Админ-панель для управления блогом студии RHYTHM">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../fonts.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-body">
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <img src="../Logo_green.svg" alt="RHYTHM Admin" class="login-logo">
+                <h1>Вход в админ-панель</h1>
+            </div>
+            
+            <form id="loginForm" class="login-form" novalidate>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required 
+                           aria-describedby="email-error" autocomplete="email">
+                    <div id="email-error" class="error-message" role="alert"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">Пароль</label>
+                    <div class="password-input-group">
+                        <input type="password" id="password" name="password" class="form-input" required 
+                               aria-describedby="password-error" autocomplete="current-password">
+                        <button type="button" class="password-toggle" aria-label="Показать пароль">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div id="password-error" class="error-message" role="alert"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="remember" name="remember">
+                        <span class="checkmark"></span>
+                        Запомнить меня
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Войти
+                </button>
+            </form>
+            
+            <div class="login-footer">
+                <a href="#" class="forgot-password">Забыли пароль?</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Admin Interface -->
+    <div id="adminInterface" class="admin-interface" style="display: none;">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-left">
+                <button class="sidebar-toggle" aria-label="Переключить боковое меню">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <img src="../Logo_green.svg" alt="RHYTHM" class="header-logo">
+                <h1 class="header-title">Админ-панель</h1>
+            </div>
+            
+            <div class="header-right">
+                <div class="user-menu">
+                    <button class="user-menu-toggle" aria-label="Меню пользователя">
+                        <img src="../assets/ruslan-portrait.jpg" alt="Профиль" class="user-avatar">
+                        <span class="user-name">Администратор</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown">
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-user"></i>
+                            Профиль
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-cog"></i>
+                            Настройки
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Выйти
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Дашборд</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#posts" class="nav-link" data-section="posts">
+                            <i class="fas fa-newspaper"></i>
+                            <span>Статьи</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#media" class="nav-link" data-section="media">
+                            <i class="fas fa-images"></i>
+                            <span>Медиа</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#categories" class="nav-link" data-section="categories">
+                            <i class="fas fa-folder"></i>
+                            <span>Категории</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tags" class="nav-link" data-section="tags">
+                            <i class="fas fa-tags"></i>
+                            <span>Теги</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#authors" class="nav-link" data-section="authors">
+                            <i class="fas fa-users"></i>
+                            <span>Авторы</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#settings" class="nav-link" data-section="settings">
+                            <i class="fas fa-cog"></i>
+                            <span>Настройки</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="section-header">
+                    <h2>Дашборд</h2>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" id="newPostBtn">
+                            <i class="fas fa-plus"></i>
+                            Новая статья
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon draft">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="draftCount">0</h3>
+                            <p class="stat-label">Черновики</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon review">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="reviewCount">0</h3>
+                            <p class="stat-label">На проверке</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon scheduled">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="scheduledCount">0</h3>
+                            <p class="stat-label">Запланировано</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon published">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="publishedCount">0</h3>
+                            <p class="stat-label">Опубликовано</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity -->
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>Последние изменения</h3>
+                        <div class="activity-list" id="recentActivity">
+                            <!-- Activity items will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3>Быстрые действия</h3>
+                        <div class="quick-actions">
+                            <button class="quick-action-btn" data-action="new-post">
+                                <i class="fas fa-plus"></i>
+                                Новая статья
+                            </button>
+                            <button class="quick-action-btn" data-action="upload-media">
+                                <i class="fas fa-upload"></i>
+                                Загрузить медиа
+                            </button>
+                            <button class="quick-action-btn" data-action="view-analytics">
+                                <i class="fas fa-chart-bar"></i>
+                                Аналитика
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Posts Section -->
+            <section id="posts" class="content-section">
+                <div class="section-header">
+                    <h2>Статьи</h2>
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <input type="text" placeholder="Поиск статей..." id="postsSearch">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <button class="btn btn-primary" id="createPostBtn">
+                            <i class="fas fa-plus"></i>
+                            Создать статью
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Posts Table -->
+                <div class="table-container">
+                    <table class="data-table" id="postsTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="selectAllPosts">
+                                </th>
+                                <th>Заголовок</th>
+                                <th>Статус</th>
+                                <th>Автор</th>
+                                <th>Категории</th>
+                                <th>Дата создания</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="postsTableBody">
+                            <!-- Posts will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Other sections will be added dynamically -->
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="modalOverlay" class="modal-overlay" style="display: none;">
+        <div class="modal-container">
+            <!-- Modal content will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="admin-auth.js"></script>
+    <script src="admin-dashboard.js"></script>
+    <script src="admin-posts.js"></script>
+    <script src="admin-media.js"></script>
+    <script src="admin-main.js"></script>
+</body>
+</html>

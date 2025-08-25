@@ -1,3 +1,60 @@
+/* Font Face Declarations */
+@font-face {
+    font-family: 'Stem';
+    src: url('fonts/stem/Stem-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Stem';
+    src: url('fonts/stem/Stem-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Stem';
+    src: url('fonts/stem/Stem-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Stem';
+    src: url('fonts/stem/Stem-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Stem';
+    src: url('fonts/stem/Stem-SemiLight.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Stem';
+    src: url('fonts/stem/Stem-Medium.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Stem';
+    src: url('fonts/stem/Stem-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* CSS Variables */
 :root {
     /* Цветовая палитра */
@@ -8,8 +65,8 @@
     --background-alt: #F5F5F5;         /* Дополнительный: серый (фоновые элементы, разделители) */
     
     /* Типографика */
-    --font-primary: 'Montserrat', 'Inter', 'Modern Grotesk', sans-serif;    /* Заголовки h1-h3 */
-    --font-secondary: 'Roboto', 'Open Sans', sans-serif;                    /* Тело текста */
+    --font-primary: 'Stem', 'Montserrat', 'Inter', 'Modern Grotesk', sans-serif;    /* Заголовки h1-h3 */
+    --font-secondary: 'Stem', 'Roboto', 'Open Sans', sans-serif;                    /* Тело текста */
     
     /* Цвета текста */
     --text-dark: var(--primary-color);
@@ -89,19 +146,19 @@ html {
 
 /* Base Typography */
 body {
-    font-family: var(--font-secondary);
+    font-family: 'Stem', var(--font-secondary);
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--secondary-color);
     font-size: 16px;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Headings - Modern Grotesk style */
+/* Headings - Stem font style */
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-primary);
-    font-weight: 700;
+    font-family: 'Stem', var(--font-primary);
     line-height: 1.2;
     margin-bottom: var(--spacing-md);
     color: var(--text-dark);
@@ -109,28 +166,29 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.02em;
 }
 
 h2 {
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: -0.01em;
 }
 
 h3 {
     font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 600;
+    font-weight: 500;
 }
 
 /* Body Text */
 p {
-    font-family: var(--font-secondary);
+    font-family: 'Stem', var(--font-secondary);
     font-size: 1.1rem;
     line-height: 1.7;
     margin-bottom: var(--spacing-md);
     color: var(--text-light);
+    font-weight: 400;
 }
 
 /* Accent Text - фирменные «острые» маркеры */

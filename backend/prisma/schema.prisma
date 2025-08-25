@@ -1,0 +1,262 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums
+enum UserRole {
+  ADMIN
+  EDITOR
+  AUTHOR
+  VIEWER
+}
+
+enum PostStatus {
+  DRAFT
+  REVIEW
+  SCHEDULED
+  PUBLISHED
+  ARCHIVED
+}
+
+enum PostLanguage {
+  RU
+  EN
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+  DOCUMENT
+}
+
+// Users table
+model User {
+  id        String   @id @default(uuid()) @db.Uuid
+  email     String   @unique
+  name      String
+  role      UserRole @default(AUTHOR)
+  bio       String?
+  avatarId  String?  @db.Uuid
+  password  String?  // null for OIDC users
+  isActive  Boolean  @default(true)
+  lastLogin DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  posts     Post[]
+  media     MediaAsset[]
+  auditLogs AuditLog[]
+
+  // OIDC fields
+  oidcProvider String?
+  oidcId       String?
+  oidcEmail    String?
+
+  @@map("users")
+}
+
+// Posts table
+model Post {
+  id                 String       @id @default(uuid()) @db.Uuid
+  title              String       @db.VarChar(120)
+  slug               String       @unique @db.VarChar(120)
+  status             PostStatus   @default(DRAFT)
+  language           PostLanguage @default(RU)
+  summary            String       @db.VarChar(180)
+  content            String       @db.Text
+  readingTime        Int?
+  canonicalUrl       String?
+  publishedAt        DateTime?
+  scheduledAt        DateTime?
+  
+  // SEO fields
+  seoMetaTitle       String?      @db.VarChar(60)
+  seoMetaDescription String?      @db.VarChar(160)
+  ogTitle            String?      @db.VarChar(95)
+  ogDescription      String?      @db.VarChar(200)
+  ogImageId          String?      @db.Uuid
+  robots             String?      @default("index,follow")
+  
+  // Relations
+  authorId           String       @db.Uuid
+  author             User         @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  heroImageId        String?      @db.Uuid
+  heroImage          MediaAsset?  @relation("PostHeroImage", fields: [heroImageId], references: [id])
+  categories         PostCategory[]
+  tags               PostTag[]
+  faqItems           FaqItem[]
+  auditLogs          AuditLog[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("posts")
+  @@index([status, language])
+  @@index([publishedAt])
+  @@index([authorId])
+}
+
+// Categories table
+model Category {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  icon        String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  posts PostCategory[]
+
+  @@map("categories")
+}
+
+// Tags table
+model Tag {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String   @unique
+  slug      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  posts PostTag[]
+
+  @@map("tags")
+}
+
+// Many-to-many relations
+model PostCategory {
+  postId     String   @db.Uuid
+  categoryId String   @db.Uuid
+  post       Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([postId, categoryId])
+  @@map("post_categories")
+}
+
+model PostTag {
+  postId String @db.Uuid
+  tagId  String @db.Uuid
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag    Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+  @@map("post_tags")
+}
+
+// Media assets table
+model MediaAsset {
+  id        String    @id @default(uuid()) @db.Uuid
+  key       String    @unique // S3 key
+  mime      String
+  size      Int
+  width     Int?
+  height    Int?
+  alt       String?   // Required for images (a11y)
+  title     String?
+  caption   String?
+  hash      String    @unique // For deduplication
+  variants  Json?     // WebP/AVIF variants, thumbnails
+  type      MediaType @default(IMAGE)
+  createdBy String    @db.Uuid
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  // Relations
+  creator   User      @relation(fields: [createdBy], references: [id])
+  posts     Post[]    @relation("PostHeroImage")
+  ogImages  Post[]    @relation("PostOgImage")
+
+  @@map("media_assets")
+  @@index([createdBy])
+  @@index([type])
+}
+
+// FAQ items for structured data
+model FaqItem {
+  id       String @id @default(uuid()) @db.Uuid
+  postId   String @db.Uuid
+  question String @db.VarChar(500)
+  answer   String @db.Text
+  order    Int    @default(0)
+  
+  // Relations
+  post     Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@map("faq_items")
+  @@index([postId, order])
+}
+
+// Audit logs for security and compliance
+model AuditLog {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  action    String   // CREATE, UPDATE, DELETE, LOGIN, etc.
+  resource  String   // POST, USER, MEDIA, etc.
+  resourceId String? @db.Uuid
+  details   Json?    // Additional context
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  // Relations
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("audit_logs")
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+// JWT refresh tokens for rotation
+model RefreshToken {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  token     String   @unique
+  expiresAt DateTime
+  isRevoked Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@map("refresh_tokens")
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+// Preview tokens for draft sharing
+model PreviewToken {
+  id        String   @id @default(uuid()) @db.Uuid
+  postId    String   @db.Uuid
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("preview_tokens")
+  @@index([postId])
+  @@index([expiresAt])
+}
+
+// Webhook configurations
+model Webhook {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String
+  url       String
+  events    String[] // PUBLISH, UNPUBLISH, DELETE
+  isActive  Boolean  @default(true)
+  secret    String?  // For signature verification
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("webhooks")
+}
