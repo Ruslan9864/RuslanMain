@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кейсы — брендинг и дизайн | RHYTHM</title>
+    <meta name="description" content="Кейсы брендинга и дизайна: Hilton, Silk Road Samarkand, локальные проекты. Фильтр по категориям HoReCa, девелопмент, B2C.">
+    
+    <!-- Schema.org разметка -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Кейсы RHYTHM",
+        "description": "Кейсы брендинга и дизайна",
+        "url": "https://rhythm.uz/cases",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "RHYTHM",
+            "url": "https://rhythm.uz"
+        }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <img src="Logo_green.svg" alt="RHYTHM" class="logo-img">
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="cases.html" class="active">Кейсы</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="about.html">О Студии</a></li>
+                <li><a href="blog.html">Блог</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+            
+            <div class="header-actions">
+                <div class="language-switch">
+                    <a href="#" class="lang-btn active">RU</a>
+                    <a href="#" class="lang-btn">EN</a>
+                </div>
+            </div>
+            
+            <button class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Block -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Кейсы</h1>
+                <p class="hero-subtitle">Результаты, которые говорят сами за себя</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Все кейсы</button>
+                <button class="filter-btn" data-filter="horeca">HoReCa</button>
+                <button class="filter-btn" data-filter="development">Девелопмент</button>
+                <button class="filter-btn" data-filter="b2c">B2C</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases Grid -->
+    <section class="cases-section">
+        <div class="container">
+            <div class="cases-grid" id="casesGrid">
+                <!-- Case 1: Hilton -->
+                <div class="case-card" data-category="horeca" data-case="hilton">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Hilton Samarkand - До" class="case-img case-before">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Hilton Samarkand - После" class="case-img case-after">
+                    </div>
+                    <div class="case-content">
+                        <div class="case-category">HoReCa</div>
+                        <h3 class="case-title">Hilton Samarkand</h3>
+                        <p class="case-description">Ребрендинг премиального отеля в историческом центре</p>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span class="stat-number">+280%</span>
+                                <span class="stat-label">бронирований</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">+150%</span>
+                                <span class="stat-label">средний чек</span>
+                            </div>
+                        </div>
+                        <button class="case-btn" onclick="openCaseModal('hilton')">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Case 2: Silk Road Samarkand -->
+                <div class="case-card" data-category="development" data-case="srs">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop" alt="Silk Road Samarkand - До" class="case-img case-before">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad16b?w=600&h=400&fit=crop" alt="Silk Road Samarkand - После" class="case-img case-after">
+                    </div>
+                    <div class="case-content">
+                        <div class="case-category">Девелопмент</div>
+                        <h3 class="case-title">Silk Road Samarkand</h3>
+                        <p class="case-description">Брендинг крупнейшего туристического комплекса</p>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span class="stat-number">+450%</span>
+                                <span class="stat-label">посещаемости</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">+320%</span>
+                                <span class="stat-label">продаж</span>
+                            </div>
+                        </div>
+                        <button class="case-btn" onclick="openCaseModal('srs')">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Case 3: Local Restaurant -->
+                <div class="case-card" data-category="horeca" data-case="restaurant">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?w=600&h=400&fit=crop" alt="Ресторан - До" class="case-img case-before">
+                        <img src="https://images.unsplash.com/photo-1556155092-8707de31f9c4?w=600&h=400&fit=crop" alt="Ресторан - После" class="case-img case-after">
+                    </div>
+                    <div class="case-content">
+                        <div class="case-category">HoReCa</div>
+                        <h3 class="case-title">Ресторан "Ритм"</h3>
+                        <p class="case-description">Создание бренда с нуля для локального ресторана</p>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span class="stat-number">+180%</span>
+                                <span class="stat-label">посетителей</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">+90%</span>
+                                <span class="stat-label">повторных</span>
+                            </div>
+                        </div>
+                        <button class="case-btn" onclick="openCaseModal('restaurant')">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Case 4: Tech Startup -->
+                <div class="case-card" data-category="b2c" data-case="tech">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Tech Startup - До" class="case-img case-before">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Tech Startup - После" class="case-img case-after">
+                    </div>
+                    <div class="case-content">
+                        <div class="case-category">B2C</div>
+                        <h3 class="case-title">FinTech Startup</h3>
+                        <p class="case-description">Ребрендинг финансового стартапа</p>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span class="stat-number">+340%</span>
+                                <span class="stat-label">конверсии</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">+220%</span>
+                                <span class="stat-label">регистраций</span>
+                            </div>
+                        </div>
+                        <button class="case-btn" onclick="openCaseModal('tech')">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Case 5: E-commerce -->
+                <div class="case-card" data-category="b2c" data-case="ecommerce">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=400&fit=crop" alt="E-commerce - До" class="case-img case-before">
+                        <img src="https://images.unsplash.com/photo-1586717799252-bd134ad00e26?w=600&h=400&fit=crop" alt="E-commerce - После" class="case-img case-after">
+                    </div>
+                    <div class="case-content">
+                        <div class="case-category">B2C</div>
+                        <h3 class="case-title">E-commerce Platform</h3>
+                        <p class="case-description">Визуальная идентичность для онлайн-магазина</p>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span class="stat-number">+520%</span>
+                                <span class="stat-label">продаж</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">+180%</span>
+                                <span class="stat-label">корзина</span>
+                            </div>
+                        </div>
+                        <button class="case-btn" onclick="openCaseModal('ecommerce')">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Case 6: Medical Center -->
+                <div class="case-card" data-category="b2c" data-case="medical">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop" alt="Медицинский центр - До" class="case-img case-before">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f22?w=600&h=400&fit=crop" alt="Медицинский центр - После" class="case-img case-after">
+                    </div>
+                    <div class="case-content">
+                        <div class="case-category">B2C</div>
+                        <h3 class="case-title">Медицинский центр</h3>
+                        <p class="case-description">Создание доверительного бренда для клиники</p>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span class="stat-number">+390%</span>
+                                <span class="stat-label">записей</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">+250%</span>
+                                <span class="stat-label">доверия</span>
+                            </div>
+                        </div>
+                        <button class="case-btn" onclick="openCaseModal('medical')">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Modal -->
+    <div class="case-modal" id="caseModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeCaseModal()">&times;</button>
+            <div class="modal-body">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Хотите такой же результат?</h2>
+                <p>Оставьте заявку — мы покажем, как ваш бренд может выглядеть дороже</p>
+                <div class="cta-buttons">
+                    <a href="contacts.html" class="cta-btn primary">Записаться на консультацию</a>
+                    <a href="#media-kit" class="cta-btn secondary">Скачать медиакит</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="cases-script.js"></script>
+</body>
+</html>

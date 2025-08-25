@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог студии RHYTHM — брендинг, дизайн, кейсы | Самарканд, Узбекистан</title>
+    <meta name="description" content="Блог студии RHYTHM: статьи по брендингу, кейсы Hilton Samarkand, AI в дизайне, HoReCa брендинг Узбекистан. Экспертиза и практические материалы.">
+    <meta name="keywords" content="блог брендинг, кейсы брендинга Узбекистан, Hilton Samarkand, AI дизайн, HoReCa брендинг, айдентика Самарканд">
+    <meta name="author" content="Руслан Рустамов - RHYTHM Studio">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Блог студии RHYTHM — брендинг, дизайн, кейсы">
+    <meta property="og:description" content="Экспертные статьи по брендингу, кейсы клиентов, AI в дизайне. Практические материалы для роста бизнеса.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rhythm.uz/blog">
+    <meta property="og:image" content="https://rhythm.uz/images/blog-og.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Блог студии RHYTHM — брендинг и дизайн">
+    <meta name="twitter:description" content="Экспертные статьи по брендингу, кейсы и практические материалы">
+    
+    <!-- Schema.org Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Блог студии RHYTHM",
+        "description": "Экспертные статьи по брендингу, дизайну и маркетингу",
+        "url": "https://rhythm.uz/blog",
+        "publisher": {
+            "@type": "Organization",
+            "name": "RHYTHM Studio",
+            "url": "https://rhythm.uz"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Руслан Рустамов",
+            "jobTitle": "Бренд-дизайнер и стратег",
+            "url": "https://rhythm.uz/about"
+        }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://rhythm.uz/blog">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <img src="Logo_green.svg" alt="RHYTHM" class="logo-img">
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="cases.html">Кейсы</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="about.html">О Студии</a></li>
+                <li><a href="blog.html" class="active">Блог</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+            
+            <div class="header-actions">
+                <div class="language-switch">
+                    <a href="#" class="lang-btn active">RU</a>
+                    <a href="#" class="lang-btn">EN</a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Открыть меню">
+                    <span class="burger-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-blog">
+        <div class="hero-content">
+            <h1>Блог студии</h1>
+            <p>Здесь мы делимся опытом, кейсами и инструментами, которые помогают бизнесу расти. Статьи, видео, разборы и практические материалы для предпринимателей и маркетологов.</p>
+            <div class="hero-cta-group">
+                <a href="#articles" class="hero-cta primary">Читать статьи</a>
+                <a href="#videos" class="hero-cta secondary">Смотреть видео</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Navigation -->
+    <nav class="blog-nav">
+        <div class="container">
+            <div class="blog-nav-content">
+                <div class="blog-filters">
+                    <button class="filter-btn active" data-category="all">Все</button>
+                    <button class="filter-btn" data-category="branding">Брендинг и стратегия</button>
+                    <button class="filter-btn" data-category="cases">Кейсы клиентов</button>
+                    <button class="filter-btn" data-category="marketing">Маркетинг и дизайн</button>
+                    <button class="filter-btn" data-category="ai">AI и технологии</button>
+                </div>
+                <div class="blog-search">
+                    <input type="text" placeholder="Поиск по блогу..." class="search-input">
+                    <button class="search-btn" aria-label="Поиск">
+                        <span class="search-icon">🔍</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="blog-main">
+        <div class="container">
+            <div class="blog-layout">
+                <!-- Articles Section -->
+                <section id="articles" class="articles-section">
+                    <div class="section-header">
+                        <h2>Статьи</h2>
+                        <p>Экспертные материалы по брендингу, дизайну и маркетингу</p>
+                    </div>
+                    
+                    <div class="articles-grid">
+                        <!-- Article 1 -->
+                        <article class="article-card" data-category="branding">
+                            <div class="article-image">
+                                <img src="images/blog/branding-uzbekistan.jpg" alt="Брендинг в Узбекистане" loading="lazy">
+                                <div class="article-category">Брендинг и стратегия</div>
+                            </div>
+                            <div class="article-content">
+                                <h3><a href="blog/branding-uzbekistan-growth.html">Почему брендинг в Узбекистане = рост среднего чека ×2</a></h3>
+                                <p>Разбираем, как правильный брендинг влияет на прибыльность бизнеса в локальном рынке. Практические примеры и цифры.</p>
+                                <div class="article-meta">
+                                    <span class="article-date">15 декабря 2024</span>
+                                    <span class="article-read-time">5 мин чтения</span>
+                                </div>
+                                <div class="article-cta">
+                                    <a href="blog/branding-uzbekistan-growth.html" class="read-more-btn">Читать полностью</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Article 2 -->
+                        <article class="article-card" data-category="cases">
+                            <div class="article-image">
+                                <img src="images/blog/hilton-samarkand-case.jpg" alt="Кейс Hilton Samarkand" loading="lazy">
+                                <div class="article-category">Кейсы клиентов</div>
+                            </div>
+                            <div class="article-content">
+                                <h3><a href="blog/hilton-samarkand-roi-case.html">Кейс Hilton Samarkand: как дизайн влияет на ROI</a></h3>
+                                <p>Детальный разбор проекта для Hilton Samarkand Regency. От стратегии до реализации и измеримых результатов.</p>
+                                <div class="article-meta">
+                                    <span class="article-date">12 декабря 2024</span>
+                                    <span class="article-read-time">8 мин чтения</span>
+                                </div>
+                                <div class="article-cta">
+                                    <a href="blog/hilton-samarkand-roi-case.html" class="read-more-btn">Читать полностью</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Article 3 -->
+                        <article class="article-card" data-category="marketing">
+                            <div class="article-image">
+                                <img src="images/blog/identity-mistakes.jpg" alt="Ошибки в айдентике" loading="lazy">
+                                <div class="article-category">Маркетинг и дизайн</div>
+                            </div>
+                            <div class="article-content">
+                                <h3><a href="blog/identity-mistakes-killing-sales.html">5 ошибок в айдентике, которые убивают продажи</a></h3>
+                                <p>Частые ошибки в брендинге, которые снижают конверсию и отпугивают клиентов. Как их избежать и исправить.</p>
+                                <div class="article-meta">
+                                    <span class="article-date">10 декабря 2024</span>
+                                    <span class="article-read-time">6 мин чтения</span>
+                                </div>
+                                <div class="article-cta">
+                                    <a href="blog/identity-mistakes-killing-sales.html" class="read-more-btn">Читать полностью</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Article 4 -->
+                        <article class="article-card" data-category="ai">
+                            <div class="article-image">
+                                <img src="images/blog/ai-branding.jpg" alt="AI в брендинге" loading="lazy">
+                                <div class="article-category">AI и технологии</div>
+                            </div>
+                            <div class="article-content">
+                                <h3><a href="blog/ai-branding-neural-networks.html">AI и брендинг: как использовать нейросети в дизайне</a></h3>
+                                <p>Практическое руководство по интеграции AI-инструментов в процесс создания брендов. Midjourney, ChatGPT и другие.</p>
+                                <div class="article-meta">
+                                    <span class="article-date">8 декабря 2024</span>
+                                    <span class="article-read-time">7 мин чтения</span>
+                                </div>
+                                <div class="article-cta">
+                                    <a href="blog/ai-branding-neural-networks.html" class="read-more-btn">Читать полностью</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Article 5 -->
+                        <article class="article-card" data-category="marketing">
+                            <div class="article-image">
+                                <img src="images/blog/horeca-branding.jpg" alt="HoReCa брендинг" loading="lazy">
+                                <div class="article-category">Маркетинг и дизайн</div>
+                            </div>
+                            <div class="article-content">
+                                <h3><a href="blog/horeca-branding-samarkand-tashkent.html">HoReCa брендинг: что работает в Самарканде и Ташкенте</a></h3>
+                                <p>Специфика брендинга для ресторанов, отелей и кафе в Узбекистане. Локальные особенности и успешные кейсы.</p>
+                                <div class="article-meta">
+                                    <span class="article-date">5 декабря 2024</span>
+                                    <span class="article-read-time">9 мин чтения</span>
+                                </div>
+                                <div class="article-cta">
+                                    <a href="blog/horeca-branding-samarkand-tashkent.html" class="read-more-btn">Читать полностью</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="load-more-section">
+                        <button class="load-more-btn">Загрузить еще статьи</button>
+                    </div>
+                </section>
+
+                <!-- Videos Section -->
+                <section id="videos" class="videos-section">
+                    <div class="section-header">
+                        <h2>Видео и ролики</h2>
+                        <p>Разборы кейсов, туториалы и behind the scenes</p>
+                    </div>
+                    
+                    <div class="video-playlists">
+                        <div class="playlist-tabs">
+                            <button class="playlist-tab active" data-playlist="cases">Разборы кейсов</button>
+                            <button class="playlist-tab" data-playlist="tutorials">Туториалы</button>
+                            <button class="playlist-tab" data-playlist="behind">Behind the scenes</button>
+                        </div>
+                        
+                        <div class="playlist-content active" data-playlist="cases">
+                            <div class="videos-grid">
+                                <div class="video-card">
+                                    <div class="video-thumbnail">
+                                        <img src="images/blog/video-hilton-case.jpg" alt="Кейс Hilton Samarkand" loading="lazy">
+                                        <div class="play-button">▶</div>
+                                        <div class="video-duration">12:45</div>
+                                    </div>
+                                    <div class="video-info">
+                                        <h3>Кейс Hilton Samarkand: полный разбор</h3>
+                                        <p>Как мы создавали брендинг для 5-звездочного отеля. От стратегии до финального результата.</p>
+                                        <div class="video-cta">
+                                            <a href="#" class="video-btn">Смотреть видео</a>
+                                            <a href="#" class="consultation-btn">Запросить консультацию</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="video-card">
+                                    <div class="video-thumbnail">
+                                        <img src="images/blog/video-silk-road.jpg" alt="Silk Road Samarkand" loading="lazy">
+                                        <div class="play-button">▶</div>
+                                        <div class="video-duration">8:32</div>
+                                    </div>
+                                    <div class="video-info">
+                                        <h3>Silk Road Samarkand: брендинг туристического проекта</h3>
+                                        <p>Создание визуальной идентичности для крупного туристического проекта в Самарканде.</p>
+                                        <div class="video-cta">
+                                            <a href="#" class="video-btn">Смотреть видео</a>
+                                            <a href="#" class="consultation-btn">Запросить консультацию</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Lead Magnets Section -->
+                <section class="lead-magnets-section">
+                    <div class="section-header">
+                        <h2>Полезные материалы</h2>
+                        <p>Скачивайте бесплатные материалы для развития вашего бренда</p>
+                    </div>
+                    
+                    <div class="lead-magnets-grid">
+                        <div class="lead-magnet-card">
+                            <div class="magnet-icon">📋</div>
+                            <h3>Чек-лист по брендингу</h3>
+                            <p>50+ пунктов для проверки вашего бренда. Убедитесь, что ничего не упустили.</p>
+                            <form class="magnet-form">
+                                <input type="email" placeholder="Ваш email" required>
+                                <button type="submit" class="magnet-btn">Скачать бесплатно</button>
+                            </form>
+                        </div>
+
+                        <div class="lead-magnet-card">
+                            <div class="magnet-icon">🧮</div>
+                            <h3>Калькулятор ROI брендинга</h3>
+                            <p>Рассчитайте, сколько вы можете заработать на правильном брендинге. Простая формула.</p>
+                            <form class="magnet-form">
+                                <input type="email" placeholder="Ваш email" required>
+                                <button type="submit" class="magnet-btn">Получить доступ</button>
+                            </form>
+                        </div>
+
+                        <div class="lead-magnet-card">
+                            <div class="magnet-icon">📚</div>
+                            <h3>Медиакит студии</h3>
+                            <p>Полное портфолио, кейсы и информация о студии. Для потенциальных клиентов и партнеров.</p>
+                            <form class="magnet-form">
+                                <input type="email" placeholder="Ваш email" required>
+                                <button type="submit" class="magnet-btn">Скачать PDF</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Popular Articles -->
+                <section class="popular-articles-section">
+                    <div class="section-header">
+                        <h2>Популярные материалы</h2>
+                        <p>ТОП-5 статей месяца по просмотрам и вовлеченности</p>
+                    </div>
+                    
+                    <div class="popular-articles-list">
+                        <article class="popular-article">
+                            <span class="popular-number">1</span>
+                            <div class="popular-content">
+                                <h3><a href="blog/branding-uzbekistan-growth.html">Почему брендинг в Узбекистане = рост среднего чека ×2</a></h3>
+                                <div class="popular-meta">
+                                    <span class="popular-views">2.4K просмотров</span>
+                                    <span class="popular-date">15 декабря</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="popular-article">
+                            <span class="popular-number">2</span>
+                            <div class="popular-content">
+                                <h3><a href="blog/hilton-samarkand-roi-case.html">Кейс Hilton Samarkand: как дизайн влияет на ROI</a></h3>
+                                <div class="popular-meta">
+                                    <span class="popular-views">1.8K просмотров</span>
+                                    <span class="popular-date">12 декабря</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="popular-article">
+                            <span class="popular-number">3</span>
+                            <div class="popular-content">
+                                <h3><a href="blog/identity-mistakes-killing-sales.html">5 ошибок в айдентике, которые убивают продажи</a></h3>
+                                <div class="popular-meta">
+                                    <span class="popular-views">1.5K просмотров</span>
+                                    <span class="popular-date">10 декабря</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="subscribe-section">
+                        <h3>Подписаться на обновления</h3>
+                        <p>Получайте новые статьи и материалы первыми</p>
+                        <form class="subscribe-form">
+                            <div class="subscribe-options">
+                                <label class="subscribe-option">
+                                    <input type="checkbox" name="email" checked>
+                                    <span>Email рассылка</span>
+                                </label>
+                                <label class="subscribe-option">
+                                    <input type="checkbox" name="telegram">
+                                    <span>Telegram канал</span>
+                                </label>
+                            </div>
+                            <input type="email" placeholder="Ваш email" required>
+                            <button type="submit" class="subscribe-btn">Подписаться</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="blog-sidebar">
+                <!-- Sticky CTA -->
+                <div class="sidebar-cta">
+                    <h3>Нужна консультация?</h3>
+                    <p>Обсудим ваш проект и расскажем, как брендинг поможет бизнесу расти</p>
+                    <a href="contacts.html" class="sidebar-cta-btn primary">Получить консультацию</a>
+                    <a href="#" class="sidebar-cta-btn secondary">Скачать медиакит</a>
+                </div>
+
+                <!-- Categories -->
+                <div class="sidebar-categories">
+                    <h3>Категории</h3>
+                    <ul class="categories-list">
+                        <li><a href="#branding">Брендинг и стратегия <span>(12)</span></a></li>
+                        <li><a href="#cases">Кейсы клиентов <span>(8)</span></a></li>
+                        <li><a href="#marketing">Маркетинг и дизайн <span>(15)</span></a></li>
+                        <li><a href="#ai">AI и технологии <span>(6)</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- Recent Articles -->
+                <div class="sidebar-recent">
+                    <h3>Недавние статьи</h3>
+                    <div class="recent-articles">
+                        <article class="recent-article">
+                            <img src="images/blog/recent-1.jpg" alt="Недавняя статья" loading="lazy">
+                            <div class="recent-content">
+                                <h4><a href="#">Как создать логотип за 72 часа</a></h4>
+                                <span class="recent-date">2 дня назад</span>
+                            </div>
+                        </article>
+                        <article class="recent-article">
+                            <img src="images/blog/recent-2.jpg" alt="Недавняя статья" loading="lazy">
+                            <div class="recent-content">
+                                <h4><a href="#">Тренды в дизайне 2025</a></h4>
+                                <span class="recent-date">5 дней назад</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Tags -->
+                <div class="sidebar-tags">
+                    <h3>Популярные теги</h3>
+                    <div class="tags-cloud">
+                        <a href="#" class="tag">#брендинг</a>
+                        <a href="#" class="tag">#дизайн</a>
+                        <a href="#" class="tag">#маркетинг</a>
+                        <a href="#" class="tag">#Узбекистан</a>
+                        <a href="#" class="tag">#HoReCa</a>
+                        <a href="#" class="tag">#AI</a>
+                        <a href="#" class="tag">#кейсы</a>
+                        <a href="#" class="tag">#стратегия</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>RHYTHM Studio</h3>
+                    <p>Системный брендинг и дизайн для бизнеса, который хочет расти</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Услуги</h3>
+                    <a href="services.html">Стратегический брендинг</a>
+                    <a href="services.html">Визуальная айдентика</a>
+                    <a href="services.html">3D и Motion дизайн</a>
+                    <a href="services.html">Коммуникации</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <a href="https://t.me/rusya_rhythm">Telegram @rusya_rhythm</a>
+                    <a href="https://instagram.com/rusya_rhythm">Instagram @rusya_rhythm</a>
+                    <a href="mailto:hello@rhythm.uz">hello@rhythm.uz</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Ресурсы</h3>
+                    <a href="blog.html">Блог</a>
+                    <a href="cases.html">Кейсы</a>
+                    <a href="about.html">О студии</a>
+                    <a href="contacts.html">Контакты</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RHYTHM Studio. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <div class="sticky-cta-content">
+            <p>Нужна консультация?</p>
+            <a href="contacts.html" class="sticky-telegram-btn">Написать в Telegram</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
