@@ -6,12 +6,12 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('🌱 Starting database seed...');
 
-  // Create admin user
-  const adminEmail = 'rrustamov986@gmail.com';
-  const adminPassword = 'Rrustamov9864';
-  const adminName = 'Rustam Rustamov';
+  // Создание администратора через переменные окружения
+  const adminEmail = process.env.ADMIN_EMAIL || 'rrustamov986@gmail.com';
+  const adminPassword = process.env.ADMIN_PASSWORD || 'Rrustamov9864';
+  const adminName = process.env.ADMIN_NAME || 'Rustam Rustamov';
 
-  // Check if admin already exists
+  // Проверяем, существует ли уже администратор
   const existingAdmin = await prisma.user.findUnique({
     where: { email: adminEmail },
   });
@@ -19,10 +19,15 @@ async function main() {
   if (existingAdmin) {
     console.log('✅ Admin user already exists:', adminEmail);
   } else {
-    // Hash password
+    // Проверяем, что пароль предоставлен
+    if (!adminPassword || adminPassword === 'Rrustamov9864') {
+      console.warn('⚠️  Warning: Using default password. Set ADMIN_PASSWORD env variable for production.');
+    }
+
+    // Хешируем пароль
     const hashedPassword = await bcrypt.hash(adminPassword, 12);
 
-    // Create admin user
+    // Создаем администратора
     const admin = await prisma.user.create({
       data: {
         email: adminEmail,
@@ -34,7 +39,28 @@ async function main() {
     });
 
     console.log('✅ Admin user created:', admin.email);
+    console.log('🔐 Login credentials:');
+    console.log(`   Email: ${admin.email}`);
+    console.log(`   Password: ${adminPassword}`);
+    console.log('⚠️  Remember to change the password after first login!');
   }
+
+  // Создание таблицы для отслеживания выполненных seed операций
+  const seedExecution = await prisma.$queryRaw`
+    CREATE TABLE IF NOT EXISTS seed_executions (
+      id SERIAL PRIMARY KEY,
+      seed_name VARCHAR(255) NOT NULL,
+      executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      status VARCHAR(50) DEFAULT 'success'
+    );
+  `;
+
+  // Отмечаем выполнение seed
+  await prisma.$executeRaw`
+    INSERT INTO seed_executions (seed_name, status) 
+    VALUES ('admin_user_seed', 'success')
+    ON CONFLICT DO NOTHING;
+  `;
 
   // Create default categories
   const defaultCategories = [

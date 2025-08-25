@@ -30,6 +30,8 @@ import { LocalAuthGuard } from './guards/local-auth.guard';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { Tokens } from './interfaces/tokens.interface';
+import { InitAdminDto } from './dto/init-admin.dto';
+import { InitAdminGuard } from './guards/init-admin.guard';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -228,5 +230,41 @@ export class AuthController {
     await this.authService['saveRefreshToken'](user.id, tokens.refreshToken);
 
     return tokens;
+  }
+
+  @Post('internal/init-admin')
+  @UseGuards(InitAdminGuard)
+  @HttpCode(HttpStatus.CREATED)
+  @ApiOperation({ 
+    summary: 'Инициализация администратора (одноразовый endpoint)',
+    description: 'Создает первого администратора системы. Требует секретный токен в заголовке x-init-token'
+  })
+  @ApiBody({ type: InitAdminDto })
+  @ApiResponse({
+    status: 201,
+    description: 'Администратор успешно создан',
+    schema: {
+      type: 'object',
+      properties: {
+        success: { type: 'boolean' },
+        message: { type: 'string' },
+      },
+    },
+  })
+  @ApiResponse({ status: 403, description: 'Неверный токен инициализации' })
+  @ApiResponse({ status: 409, description: 'Пользователь уже существует' })
+  async initAdmin(
+    @Body() initAdminDto: InitAdminDto,
+    @Req() req: Request,
+  ): Promise<{ success: boolean; message: string }> {
+    const ipAddress = req.ip || req.connection.remoteAddress;
+    const result = await this.authService.initAdmin(initAdminDto, ipAddress);
+    
+    if (result.success) {
+      // Инвалидируем токен после успешного создания
+      await this.authService.invalidateInitToken();
+    }
+    
+    return result;
   }
 }

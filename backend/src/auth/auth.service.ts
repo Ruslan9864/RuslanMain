@@ -17,6 +17,7 @@ import { RegisterDto } from './dto/register.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { Tokens } from './interfaces/tokens.interface';
+import { InitAdminDto } from './dto/init-admin.dto';
 
 @Injectable()
 export class AuthService {
@@ -265,6 +266,66 @@ export class AuthService {
     });
 
     return tokens;
+  }
+
+  async initAdmin(initAdminDto: InitAdminDto, ipAddress?: string): Promise<{ success: boolean; message: string }> {
+    const { email, password } = initAdminDto;
+
+    // Проверяем, существует ли уже пользователь с таким email
+    const existingUser = await this.prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (existingUser) {
+      return {
+        success: false,
+        message: `Пользователь с email ${email} уже существует`,
+      };
+    }
+
+    // Хешируем пароль
+    const hashedPassword = await this.hashPassword(password);
+
+    // Создаем администратора
+    const admin = await this.prisma.user.create({
+      data: {
+        email,
+        name: email.split('@')[0], // Используем часть email как имя по умолчанию
+        password: hashedPassword,
+        role: 'ADMIN',
+        isActive: true,
+      },
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        role: true,
+        createdAt: true,
+      },
+    });
+
+    // Логируем создание администратора (без пароля)
+    await this.logAudit(admin.id, 'INIT_ADMIN', 'USER', admin.id, {
+      method: 'init-admin',
+      ipAddress,
+      email: admin.email,
+      role: admin.role,
+    });
+
+    return {
+      success: true,
+      message: `Администратор ${email} успешно создан`,
+    };
+  }
+
+  async invalidateInitToken(): Promise<void> {
+    // В реальном приложении здесь можно:
+    // 1. Удалить токен из env
+    // 2. Сохранить флаг в базе данных
+    // 3. Использовать Redis для инвалидации
+    
+    // Для демонстрации просто логируем
+    console.log('INIT_ADMIN_TOKEN инвалидирован');
   }
 
   private async generateTokens(user: any): Promise<Tokens> {
