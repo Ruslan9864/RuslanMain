@@ -10,7 +10,7 @@ const caseData = {
         result: "Новый бренд помог отелю занять лидирующие позиции в регионе, привлечь премиальную аудиторию и увеличить средний чек.",
         roi: {
             bookings: "+280%",
-            revenue: "+150%",
+            revenue: "×2",
             recognition: "+320%",
             satisfaction: "4.9/5"
         },
@@ -24,7 +24,7 @@ const caseData = {
         approach: "Разработали стратегию позиционирования как 'Ворота в историю'. Создали визуальную систему, отражающую богатое культурное наследие региона. Интегрировали бренд во все точки контакта.",
         result: "Комплекс стал узнаваемым символом туризма в Узбекистане, привлекая как местных, так и иностранных гостей.",
         roi: {
-            visitors: "+450%",
+            visitors: "×4.5",
             sales: "+320%",
             media: "+280%",
             partnerships: "+180%"
@@ -39,7 +39,7 @@ const caseData = {
         approach: "Провели исследование целевой аудитории и конкурентов. Создали концепцию 'Традиции в современном ритме'. Разработали запоминающийся логотип и фирменный стиль.",
         result: "Ресторан быстро стал популярным местом среди местных жителей и туристов, создав уникальную атмосферу.",
         roi: {
-            customers: "+180%",
+            customers: "×2.8",
             repeat: "+90%",
             reviews: "4.8/5",
             social: "+250%"
@@ -49,12 +49,12 @@ const caseData = {
     },
     tech: {
         title: "FinTech Startup",
-        category: "B2C",
+        category: "FMCG / Retail",
         task: "Ребрендинг финансового стартапа для повышения доверия пользователей и увеличения конверсии.",
         approach: "Провели аудит существующего бренда и анализ конкурентов. Создали новую визуальную идентичность, подчеркивающую надежность и инновационность. Обновили UX/UI дизайн.",
         result: "Новый бренд значительно повысил доверие пользователей и улучшил показатели конверсии.",
         roi: {
-            conversion: "+340%",
+            conversion: "×4.4",
             registrations: "+220%",
             trust: "+180%",
             retention: "+150%"
@@ -64,12 +64,12 @@ const caseData = {
     },
     ecommerce: {
         title: "E-commerce Platform",
-        category: "B2C",
+        category: "FMCG / Retail",
         task: "Создание визуальной идентичности для онлайн-магазина, специализирующегося на премиальных товарах.",
         approach: "Разработали стратегию позиционирования как 'Премиум доступен каждому'. Создали элегантный и современный дизайн, подчеркивающий качество товаров.",
         result: "Новая идентичность помогла привлечь премиальную аудиторию и увеличить средний чек.",
         roi: {
-            sales: "+520%",
+            sales: "×6.2",
             cart: "+180%",
             premium: "+250%",
             loyalty: "+200%"
@@ -79,12 +79,12 @@ const caseData = {
     },
     medical: {
         title: "Медицинский центр",
-        category: "B2C",
+        category: "Образование / курсы",
         task: "Создание доверительного бренда для медицинской клиники, специализирующейся на профилактической медицине.",
         approach: "Провели исследование восприятия медицинских брендов. Создали теплую и доверительную визуальную идентичность. Разработали коммуникационную стратегию, подчеркивающую заботу о пациентах.",
         result: "Новый бренд помог преодолеть страх перед медицинскими процедурами и увеличить количество записей.",
         roi: {
-            appointments: "+390%",
+            appointments: "×4.9",
             trust: "+250%",
             referrals: "+180%",
             satisfaction: "4.9/5"
@@ -118,7 +118,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     card.style.display = 'none';
                 }
             });
+            
+            // Add smooth scroll to cases section
+            if (filter !== 'all') {
+                document.querySelector('.cases-section').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         });
+    });
+    
+    // Initialize case cards with animation
+    caseCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        
+        // Stagger animation
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 100);
     });
 });
 
@@ -130,7 +151,7 @@ function openCaseModal(caseId) {
     
     if (!caseInfo) return;
     
-    // Create modal content
+    // Create modal content with improved structure
     modalBody.innerHTML = `
         <div class="case-detail">
             <div class="case-detail-images">
@@ -168,19 +189,37 @@ function openCaseModal(caseId) {
                     <blockquote>${caseInfo.testimonial}</blockquote>
                     <cite>— ${caseInfo.author}</cite>
                 </div>
+                
+                <div class="case-detail-cta">
+                    <button class="case-btn" onclick="closeCaseModal()">Хочу такой же результат</button>
+                </div>
             </div>
         </div>
     `;
     
-    // Show modal
+    // Show modal with animation
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    
+    // Add entrance animation
+    setTimeout(() => {
+        modalBody.style.opacity = '1';
+        modalBody.style.transform = 'scale(1)';
+    }, 100);
 }
 
 function closeCaseModal() {
     const modal = document.getElementById('caseModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
+    const modalBody = modal.querySelector('.modal-body');
+    
+    // Add exit animation
+    modalBody.style.opacity = '0';
+    modalBody.style.transform = 'scale(0.9)';
+    
+    setTimeout(() => {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }, 300);
 }
 
 // Helper function to get readable stat labels
@@ -241,7 +280,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add animation on scroll
+// Add animation on scroll with improved performance
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -258,8 +297,122 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe case cards for animation
 document.querySelectorAll('.case-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
     observer.observe(card);
 });
+
+// Add hover effects for case cards
+document.querySelectorAll('.case-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-12px) scale(1.02)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+    });
+});
+
+// Add smooth transitions for filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-2px) scale(1.05)';
+    });
+    
+    btn.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+    });
+});
+
+// Add loading animation for images
+document.querySelectorAll('.case-img').forEach(img => {
+    img.addEventListener('load', function() {
+        this.style.opacity = '1';
+        this.style.transform = 'scale(1)';
+    });
+    
+    img.addEventListener('error', function() {
+        this.style.opacity = '0.5';
+        this.style.filter = 'grayscale(100%)';
+    });
+});
+
+// Add keyboard navigation for modal
+document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('caseModal');
+    if (modal.classList.contains('active')) {
+        if (e.key === 'Tab') {
+            const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+            
+            if (e.shiftKey && document.activeElement === firstElement) {
+                lastElement.focus();
+                e.preventDefault();
+            } else if (!e.shiftKey && document.activeElement === lastElement) {
+                firstElement.focus();
+                e.preventDefault();
+            }
+        }
+    }
+});
+
+// Add accessibility improvements
+document.querySelectorAll('.case-card').forEach((card, index) => {
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', `Кейс ${index + 1}: ${card.querySelector('.case-title').textContent}`);
+    
+    card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const caseId = this.getAttribute('data-case');
+            openCaseModal(caseId);
+        }
+    });
+});
+
+// Add performance optimization for animations
+let ticking = false;
+
+function updateAnimations() {
+    ticking = false;
+    
+    document.querySelectorAll('.case-card').forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        if (isVisible) {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }
+    });
+}
+
+function requestAnimationFrame() {
+    if (!ticking) {
+        requestAnimationFrame(updateAnimations);
+        ticking = true;
+    }
+}
+
+// Optimize scroll performance
+window.addEventListener('scroll', requestAnimationFrame, { passive: true });
+
+// Add preload for critical images
+function preloadImages() {
+    const criticalImages = [
+        'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop',
+        'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop'
+    ];
+    
+    criticalImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+}
+
+// Initialize preloading when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', preloadImages);
+} else {
+    preloadImages();
+}

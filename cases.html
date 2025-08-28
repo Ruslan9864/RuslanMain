@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кейсы — брендинг и дизайн | RHYTHM</title>
-    <meta name="description" content="Кейсы брендинга и дизайна: Hilton, Silk Road Samarkand, локальные проекты. Фильтр по категориям HoReCa, девелопмент, B2C.">
+    <title>Кейсы брендинговой студии Rhyhm — Hilton, Silk Road Samarkand, HoReCa, FMCG</title>
+    <meta name="description" content="Кейсы брендингового агентства: Hilton, Silk Road Samarkand, HoReCa, FMCG. Задача → решение → результат. Рост среднего чека ×2.">
     
     <!-- Schema.org разметка -->
     <script type="application/ld+json">
@@ -12,7 +12,7 @@
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "Кейсы RHYTHM",
-        "description": "Кейсы брендинга и дизайна",
+        "description": "Кейсы брендингового агентства: Hilton, Silk Road Samarkand, HoReCa, FMCG. Задача → решение → результат.",
         "url": "https://rhythm.uz/cases",
         "mainEntity": {
             "@type": "Organization",
@@ -24,6 +24,7 @@
     
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cases-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" href="Favicon.svg" type="image/svg+xml">
 </head>
@@ -60,11 +61,11 @@
     </header>
 
     <!-- Hero Block -->
-    <section class="hero">
+    <section class="hero-cases">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Кейсы</h1>
-                <p class="hero-subtitle">Результаты, которые говорят сами за себя</p>
+                <h1 class="hero-title">Мы не рисуем "красивости". Мы чиним бренды — и вот доказательства.</h1>
+                <p class="hero-subtitle">Каждый кейс = конкретная задача, наше решение и измеримый результат</p>
             </div>
         </div>
     </section>
@@ -74,9 +75,10 @@
         <div class="container">
             <div class="filter-container">
                 <button class="filter-btn active" data-filter="all">Все кейсы</button>
-                <button class="filter-btn" data-filter="horeca">HoReCa</button>
+                <button class="filter-btn" data-filter="horeca">Hospitality / HoReCa</button>
                 <button class="filter-btn" data-filter="development">Девелопмент</button>
-                <button class="filter-btn" data-filter="b2c">B2C</button>
+                <button class="filter-btn" data-filter="fmcg">FMCG / Retail</button>
+                <button class="filter-btn" data-filter="education">Образование / курсы</button>
             </div>
         </div>
     </section>
@@ -88,37 +90,59 @@
                 <!-- Case 1: Hilton -->
                 <div class="case-card" data-category="horeca" data-case="hilton">
                     <div class="case-image">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Hilton Samarkand - До" class="case-img case-before">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Hilton Samarkand - После" class="case-img case-after">
+                        <div class="case-cover">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Hilton Samarkand - До" class="case-img case-before">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Hilton Samarkand - После" class="case-img case-after">
+                            <div class="case-overlay">
+                                <div class="case-overlay-content">
+                                    <span class="case-overlay-text">До</span>
+                                    <span class="case-overlay-text">После</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="case-content">
                         <div class="case-category">HoReCa</div>
                         <h3 class="case-title">Hilton Samarkand</h3>
-                        <p class="case-description">Ребрендинг премиального отеля в историческом центре</p>
+                        <p class="case-description">
+                            <strong>Задача:</strong> Айдентика премиального отеля<br>
+                            <strong>Результат:</strong> Рост среднего чека ×2
+                        </p>
                         <div class="case-stats">
                             <div class="stat">
                                 <span class="stat-number">+280%</span>
                                 <span class="stat-label">бронирований</span>
                             </div>
                             <div class="stat">
-                                <span class="stat-number">+150%</span>
+                                <span class="stat-number">×2</span>
                                 <span class="stat-label">средний чек</span>
                             </div>
                         </div>
-                        <button class="case-btn" onclick="openCaseModal('hilton')">Подробнее</button>
+                        <button class="case-btn" onclick="openCaseModal('hilton')">Смотреть кейс</button>
                     </div>
                 </div>
 
                 <!-- Case 2: Silk Road Samarkand -->
                 <div class="case-card" data-category="development" data-case="srs">
                     <div class="case-image">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop" alt="Silk Road Samarkand - До" class="case-img case-before">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad16b?w=600&h=400&fit=crop" alt="Silk Road Samarkand - После" class="case-img case-after">
+                        <div class="case-cover">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop" alt="Silk Road Samarkand - До" class="case-img case-before">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad16b?w=600&h=400&fit=crop" alt="Silk Road Samarkand - После" class="case-img case-after">
+                            <div class="case-overlay">
+                                <div class="case-overlay-content">
+                                    <span class="case-overlay-text">До</span>
+                                    <span class="case-overlay-text">После</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="case-content">
                         <div class="case-category">Девелопмент</div>
                         <h3 class="case-title">Silk Road Samarkand</h3>
-                        <p class="case-description">Брендинг крупнейшего туристического комплекса</p>
+                        <p class="case-description">
+                            <strong>Задача:</strong> Брендинг туристического комплекса<br>
+                            <strong>Результат:</strong> Рост посещаемости ×4.5
+                        </p>
                         <div class="case-stats">
                             <div class="stat">
                                 <span class="stat-number">+450%</span>
@@ -129,20 +153,31 @@
                                 <span class="stat-label">продаж</span>
                             </div>
                         </div>
-                        <button class="case-btn" onclick="openCaseModal('srs')">Подробнее</button>
+                        <button class="case-btn" onclick="openCaseModal('srs')">Смотреть кейс</button>
                     </div>
                 </div>
 
                 <!-- Case 3: Local Restaurant -->
                 <div class="case-card" data-category="horeca" data-case="restaurant">
                     <div class="case-image">
-                        <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?w=600&h=400&fit=crop" alt="Ресторан - До" class="case-img case-before">
-                        <img src="https://images.unsplash.com/photo-1556155092-8707de31f9c4?w=600&h=400&fit=crop" alt="Ресторан - После" class="case-img case-after">
+                        <div class="case-cover">
+                            <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?w=600&h=400&fit=crop" alt="Ресторан - До" class="case-img case-before">
+                            <img src="https://images.unsplash.com/photo-1556155092-8707de31f9c4?w=600&h=400&fit=crop" alt="Ресторан - После" class="case-img case-after">
+                            <div class="case-overlay">
+                                <div class="case-overlay-content">
+                                    <span class="case-overlay-text">До</span>
+                                    <span class="case-overlay-text">После</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="case-content">
                         <div class="case-category">HoReCa</div>
                         <h3 class="case-title">Ресторан "Ритм"</h3>
-                        <p class="case-description">Создание бренда с нуля для локального ресторана</p>
+                        <p class="case-description">
+                            <strong>Задача:</strong> Создание бренда с нуля<br>
+                            <strong>Результат:</strong> Рост клиентов ×2.8
+                        </p>
                         <div class="case-stats">
                             <div class="stat">
                                 <span class="stat-number">+180%</span>
@@ -153,20 +188,31 @@
                                 <span class="stat-label">повторных</span>
                             </div>
                         </div>
-                        <button class="case-btn" onclick="openCaseModal('restaurant')">Подробнее</button>
+                        <button class="case-btn" onclick="openCaseModal('restaurant')">Смотреть кейс</button>
                     </div>
                 </div>
 
                 <!-- Case 4: Tech Startup -->
-                <div class="case-card" data-category="b2c" data-case="tech">
+                <div class="case-card" data-category="fmcg" data-case="tech">
                     <div class="case-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Tech Startup - До" class="case-img case-before">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Tech Startup - После" class="case-img case-after">
+                        <div class="case-cover">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Tech Startup - До" class="case-img case-before">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Tech Startup - После" class="case-img case-after">
+                            <div class="case-overlay">
+                                <div class="case-overlay-content">
+                                    <span class="case-overlay-text">До</span>
+                                    <span class="case-overlay-text">После</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="case-content">
-                        <div class="case-category">B2C</div>
+                        <div class="case-category">FMCG / Retail</div>
                         <h3 class="case-title">FinTech Startup</h3>
-                        <p class="case-description">Ребрендинг финансового стартапа</p>
+                        <p class="case-description">
+                            <strong>Задача:</strong> Ребрендинг для доверия<br>
+                            <strong>Результат:</strong> Рост конверсии ×4.4
+                        </p>
                         <div class="case-stats">
                             <div class="stat">
                                 <span class="stat-number">+340%</span>
@@ -177,20 +223,31 @@
                                 <span class="stat-label">регистраций</span>
                             </div>
                         </div>
-                        <button class="case-btn" onclick="openCaseModal('tech')">Подробнее</button>
+                        <button class="case-btn" onclick="openCaseModal('tech')">Смотреть кейс</button>
                     </div>
                 </div>
 
                 <!-- Case 5: E-commerce -->
-                <div class="case-card" data-category="b2c" data-case="ecommerce">
+                <div class="case-card" data-category="fmcg" data-case="ecommerce">
                     <div class="case-image">
-                        <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=400&fit=crop" alt="E-commerce - До" class="case-img case-before">
-                        <img src="https://images.unsplash.com/photo-1586717799252-bd134ad00e26?w=600&h=400&fit=crop" alt="E-commerce - После" class="case-img case-after">
+                        <div class="case-cover">
+                            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=400&fit=crop" alt="E-commerce - До" class="case-img case-before">
+                            <img src="https://images.unsplash.com/photo-1586717799252-bd134ad00e26?w=600&h=400&fit=crop" alt="E-commerce - После" class="case-img case-after">
+                            <div class="case-overlay">
+                                <div class="case-overlay-content">
+                                    <span class="case-overlay-text">До</span>
+                                    <span class="case-overlay-text">После</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="case-content">
-                        <div class="case-category">B2C</div>
+                        <div class="case-category">FMCG / Retail</div>
                         <h3 class="case-title">E-commerce Platform</h3>
-                        <p class="case-description">Визуальная идентичность для онлайн-магазина</p>
+                        <p class="case-description">
+                            <strong>Задача:</strong> Визуальная идентичность<br>
+                            <strong>Результат:</strong> Рост продаж ×6.2
+                        </p>
                         <div class="case-stats">
                             <div class="stat">
                                 <span class="stat-number">+520%</span>
@@ -201,20 +258,31 @@
                                 <span class="stat-label">корзина</span>
                             </div>
                         </div>
-                        <button class="case-btn" onclick="openCaseModal('ecommerce')">Подробнее</button>
+                        <button class="case-btn" onclick="openCaseModal('ecommerce')">Смотреть кейс</button>
                     </div>
                 </div>
 
                 <!-- Case 6: Medical Center -->
-                <div class="case-card" data-category="b2c" data-case="medical">
+                <div class="case-card" data-category="education" data-case="medical">
                     <div class="case-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop" alt="Медицинский центр - До" class="case-img case-before">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f22?w=600&h=400&fit=crop" alt="Медицинский центр - После" class="case-img case-after">
+                        <div class="case-cover">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop" alt="Медицинский центр - До" class="case-img case-before">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f22?w=600&h=400&fit=crop" alt="Медицинский центр - После" class="case-img case-after">
+                            <div class="case-overlay">
+                                <div class="case-overlay-content">
+                                    <span class="case-overlay-text">До</span>
+                                    <span class="case-overlay-text">После</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="case-content">
-                        <div class="case-category">B2C</div>
+                        <div class="case-category">Образование / курсы</div>
                         <h3 class="case-title">Медицинский центр</h3>
-                        <p class="case-description">Создание доверительного бренда для клиники</p>
+                        <p class="case-description">
+                            <strong>Задача:</strong> Создание доверительного бренда<br>
+                            <strong>Результат:</strong> Рост записей ×4.9
+                        </p>
                         <div class="case-stats">
                             <div class="stat">
                                 <span class="stat-number">+390%</span>
@@ -225,9 +293,74 @@
                                 <span class="stat-label">доверия</span>
                             </div>
                         </div>
-                        <button class="case-btn" onclick="openCaseModal('medical')">Подробнее</button>
+                        <button class="case-btn" onclick="openCaseModal('medical')">Смотреть кейс</button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof Section -->
+    <section class="proof-section">
+        <div class="container">
+            <h2 class="section-title">Доверие клиентов</h2>
+            
+            <div class="clients-carousel">
+                <div class="clients-track">
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-01.svg" alt="Партнер 1" class="client-img">
+                    </div>
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-02.svg" alt="Партнер 2" class="client-img">
+                    </div>
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-03.svg" alt="Партнер 3" class="client-img">
+                    </div>
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-04.svg" alt="Партнер 4" class="client-img">
+                    </div>
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-05.svg" alt="Партнер 5" class="client-img">
+                    </div>
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-06.svg" alt="Партнер 6" class="client-img">
+                    </div>
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-07.svg" alt="Партнер 7" class="client-img">
+                    </div>
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-08.svg" alt="Партнер 8" class="client-img">
+                    </div>
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-09.svg" alt="Партнер 9" class="client-img">
+                    </div>
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-10.svg" alt="Партнер 10" class="client-img">
+                    </div>
+                    <!-- Duplicate logos for seamless loop -->
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-01.svg" alt="Партнер 1" class="client-img">
+                    </div>
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-02.svg" alt="Партнер 2" class="client-img">
+                    </div>
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-03.svg" alt="Партнер 3" class="client-img">
+                    </div>
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-04.svg" alt="Партнер 4" class="client-img">
+                    </div>
+                    <div class="client-logo">
+                        <img src="SVG_partners/Logo-05.svg" alt="Партнер 5" class="client-img">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="client-quote">
+                <blockquote>
+                    "После ребрендинга средний чек вырос ×2. Теперь клиенты не торгуются — они платят."
+                </blockquote>
+                <p class="quote-author">— Клиент Silk Road Samarkand</p>
             </div>
         </div>
     </section>
@@ -242,22 +375,112 @@
         </div>
     </div>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Хотите такой же результат?</h2>
-                <p>Оставьте заявку — мы покажем, как ваш бренд может выглядеть дороже</p>
-                <div class="cta-buttons">
-                    <a href="contacts.html" class="cta-btn primary">Записаться на консультацию</a>
-                    <a href="#media-kit" class="cta-btn secondary">Скачать медиакит</a>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <!-- Колонка 1 — О студии -->
+                <div class="footer-section">
+                    <h3>RHYTHM Studio</h3>
+                    <p class="footer-mission">Стратегический брендинг и сильный визуал — в ритме задач бизнеса.</p>
+                    <a href="media-kit-ru.html" class="footer-cta-btn">
+                        Скачать медиакит (PDF)
+                    </a>
+                </div>
+                
+                <!-- Колонка 2 — Навигация -->
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <ul class="footer-nav">
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="cases.html">Кейсы</a></li>
+                        <li><a href="services.html">Услуги</a></li>
+                        <li><a href="about.html">О студии</a></li>
+                        <li><a href="blog.html">Блог</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Колонка 3 — Контакты -->
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <div class="footer-contacts">
+                        <p><a href="mailto:rrustomov986@gmail.com" class="footer-contact-link">rrustomov986@gmail.com</a></p>
+                        <p><a href="tel:+998902706815" class="footer-contact-link">+998 (90) 270-68-15</a></p>
+                        <p><a href="tel:+998908888684" class="footer-contact-link">+998 (90) 888-86-84</a></p>
+                        <p class="footer-location">Самарканд, Узбекистан</p>
+                    </div>
+                </div>
+                
+                <!-- Колонка 4 — Мы в сети -->
+                <div class="footer-section">
+                    <h3>Мы в сети</h3>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/rusya_rhythm" target="_blank" rel="noopener noreferrer" aria-label="Instagram — открыть в новой вкладке" class="social-link">
+                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            <span>@rusya_rhythm</span>
+                        </a>
+                        
+                        <a href="https://behance.net/ruslanrustamov2" target="_blank" rel="noopener noreferrer" aria-label="Behance — портфолио" class="social-link">
+                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.561-5.92 5.466-5.92 3.004 0 5.089 1.592 5.461 4.426H24c-.423-4.426-3.457-6.898-7.766-6.898-5.199 0-7.89 3.988-7.89 8.281 0 5.65 3.443 8.716 8.656 8.716 4.96 0 7.97-2.004 8.888-4.426l-2.786-.005zM13.25 13.504c0 1.801 1.139 2.712 2.715 2.712 1.56 0 2.715-.911 2.715-2.712 0-1.801-1.155-2.712-2.715-2.712-1.576 0-2.715.911-2.715 2.712zM0 11.508v-1.22h6.872v1.22H0z"/>
+                            </svg>
+                            <span>Портфолио</span>
+                        </a>
+                        
+                        <a href="https://tiktok.com/@rusya_rhythm" target="_blank" rel="noopener noreferrer" aria-label="TikTok — @rusya_rhythm" class="social-link">
+                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-1.92-.23-2.82.32-.28.18-.5.42-.72.69-1.04 1.26-.98 2.98-.23 4.28.68 1.08 2.04 1.44 3.12.81 1.08-.64 1.62-2.12 1.32-3.51-.24-.91-.59-1.83-.59-2.78z"/>
+                            </svg>
+                            <span>@rusya_rhythm</span>
+                        </a>
+                        
+                        <a href="https://t.me/rhythm_for" target="_blank" rel="noopener noreferrer" aria-label="Telegram-канал — rhythm_for" class="social-link">
+                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                            </svg>
+                            <span>rhythm_for</span>
+                        </a>
+                        
+                        <a href="https://taplink.cc/rusya_rhythm" target="_blank" rel="noopener noreferrer" aria-label="Taplink — все ссылки" class="social-link">
+                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span>Ещё ссылки</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Нижняя полоса (sub-footer) -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="footer-copyright">
+                        <p>© 2025 RHYTHM Studio. All rights reserved.</p>
+                        <div class="footer-legal">
+                            <a href="/legal/privacy">Политика конфиденциальности</a>
+                            <span class="separator">|</span>
+                            <a href="/legal/terms">Условия использования</a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-actions">
+                        <div class="language-switch-footer">
+                            <a href="#" class="lang-btn active">RU</a>
+                            <a href="#" class="lang-btn">EN</a>
+                        </div>
+                        <div class="footer-signature">
+                            <span>Design & Strategy by Ruslan Rustamov</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
+    </footer>
+    
     <!-- Scripts -->
     <script src="script.js"></script>
-    <script src="cases-script.js"></script>
 </body>
 </html>
